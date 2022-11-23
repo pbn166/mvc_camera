@@ -27,12 +27,15 @@ class adminlogin
         if(empty($adminUser)|| empty($adminPass)){
             $alert = "User and Password khong de trong";
            return $alert;
+           
         } 
-        //else {
-        //    $query = "SELECT * FROM tbl_admin WHERE adminUser ='$adminUser" AND adminPass='$adminPass' LIMIT 1 ";
-        //     $result = $this->db->select($query);
+        else {
+           $query = "SELECT * FROM tbl_admin WHERE adminUser ='$adminUser' AND adminPass='$adminPass' LIMIT 1 ";
+            $result = $this->db->select($query);
+    
 
-            if($result |= fasle){
+            if($result != false)
+            {
                 $value = $result->fetth_assoc();
                 Session::set('adminlogin', true);
                 Session::set('adminId', $value['adminId']);
@@ -46,4 +49,5 @@ class adminlogin
 }
 }
 
+}
 ?>
