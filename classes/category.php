@@ -37,11 +37,56 @@ class category
            }            
         }
     }
+    //Sắp xếp theo giảm dần, thêm trước lên đầu
     public function show_category(){
         $query ="SELECT * FROM tbl_category order by catid desc";
         $result = $this->db->select($query);
         return $result;
     }
+    //
+    public function getcatbyId($id){
+        $query ="SELECT * FROM tbl_category where catid = '$id'";
+        $result = $this->db->select($query);
+        return $result;
+    }
+    public function del_category($id){
+        $query ="SELECT * FROM tbl_category where catid = '$id'";
+        $result = $this->db->delete($query);
+        // // // if($result){
+        // // //     $query = "UPDATE tbl_category SET catName= '$catName' WHERE catid='$id'";
+        // // //     $result = $this->db->update($query);
+            if($result){
+             $alert = "<span class='success'>Xóa thành công</span>";
+             return $alert;
+            }else{
+             $alert = "<span class='success'> Xóa không thành công </span>";
+             return $alert;
+            }            
 
+        }
+    
+    public function update_category($catName,$id)
+{
+     //Ktra hop he
+     $catName = $this->fm->validation($catName);        
+     $catName = mysqli_real_escape_string($this->db->link,$catName);
+     $id = mysqli_real_escape_string($this->db->link,$id);
+     
+     if(empty($catName)){
+        $alert = "<span class='success'>Danh muc khong duoc de trong</span>";
+       return $alert; 
+    } 
+    else {
+       $query = "UPDATE tbl_category SET catName= '$catName' WHERE catid='$id'";
+       $result = $this->db->update($query);
+       if($result){
+        $alert = "<span class='success'>Chỉnh sửa thành công</span>";
+        return $alert;
+       }else{
+        $alert = "<span class='success'> Chỉnh sửa không thành công </span>";
+        return $alert;
+       }            
+    }
+}
 }
 ?>
