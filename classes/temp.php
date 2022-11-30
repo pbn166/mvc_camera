@@ -278,34 +278,35 @@ class product
     $uploaded_image = "uploads/" .$unique_image;
      
      
-    if($productName=="" || $category=="" || $brand==""  || $product_desc=="" ||$type=="" || $price=="" ||  $file_name==""){
+    if($productName=="" || $category=="" || $brand==""  || $product_desc=="" ||$type=="" || $price==""  ){
         $alert = "<span class='error'>Không được để trống</span>";
        return $alert;
     } 
     else {
         if(!empty($file_name)){
             //Neu nguoi dung lua chon anh
-                if ($filesize > 1048567)
+                if ($file_size > 204800)
         {
             $alert = "<span class='success'> Hình ảnh nên dưới 2MB! </span>";
             return $alert;
         }
         elseif 
-        (in_array(file_ext, $permited) === false)
+        (in_array($file_ext, $permited) === false)
         {
             //echo "<span class = 'error'> Bạn có thể upload ảnh: ".implode(' , ',$permited),"</span>";
-            $alert ="<span class = 'success'> Bạn có thể upload ảnh: ".implode(' , ',$permited)."</span>";
-            return $alert ;
+            $alert ="<span class = 'success'> Bạn chỉ có thể upload ảnh:-".implode(' , ',$permited)."</span>";
+            return $alert ; 
         } 
         $query = "UPDATE tbl_product SET 
-        productName= '$productName' ,
-        brandid= '$brand' ,
-        catid= '$category' ,
-        type= '$type' ,
-        price = '$price' ,
-        image= '$unique_image'     ,
-        product_desc = '$product_desc' ,
-        WHERE productid='$id'";
+            
+            productName= '$productName',
+            brandid= '$brand',
+            catid= '$category',
+            type= '$type',
+            price = '$price',
+            image= '$unique_image',
+            product_desc = '$product_desc'
+            WHERE productId='$id'";
     }else {
         $query = "UPDATE tbl_product SET 
         productName= '$productName' ,
@@ -313,9 +314,9 @@ class product
         catid= '$category' ,
         type= '$type' ,
         price = '$price' ,
-        image= '$unique_image'    , 
-        product_desc = '$product_desc' ,
-        WHERE productid='$id'";
+        
+        product_desc = '$product_desc' 
+        WHERE productId='$id'";
         }
 
       // $query = "UPDATE tbl_category SET catName= '$catName' WHERE catid='$id'";

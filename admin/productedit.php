@@ -27,7 +27,7 @@
         <h2>Sửa sản phẩm</h2>
         <div class="block">               
         <?php
-                if(isset($updatetProduct)){
+                if(isset($updateProduct)){
                     echo $updateProduct;
                 }
                 ?>
@@ -164,7 +164,7 @@
 				<tr>
                     <td></td>
                     <td>
-                        <input type="submit" name="submit" Value="Chỉnh sửa" />
+                        <input type="submit" name="submit" value="Update" />
                     </td>
                 </tr>
             </table>

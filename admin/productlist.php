@@ -5,11 +5,21 @@
 <?php
 					$pd = new product();
 					$fm = new Format();
+					if(isset($_GET['productid'])){
+						$id = $_GET['productid'];
+						$delpro = $pd->del_product($id);
+					}
 ?>
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Danh mục sản phẩm</h2>
         <div class="block">  
+			<?php 
+				if(isset($delpro)){
+					echo $delpro ;
+
+				}
+				?>
             <table class="data display datatable" id="example">
 			<thead>
 				<tr>
@@ -53,7 +63,7 @@
 							echo 'Không nổi bật';
 						}
 					?></td>
-					<td><a href="productedit.php?productid=<?php echo $result['productId']?>">Edit</a> || <a href="productedit.php?productid=<?php echo $result['productId']?>">Delete</a></td>
+					<td><a href="productedit.php?productid=<?php echo $result['productId']?>">Edit</a> || <a href="productlist.php?productid=<?php echo $result['productId']?>">Delete</a></td>
 				</tr>
 				<?php
 						}
