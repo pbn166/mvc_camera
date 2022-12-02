@@ -1,22 +1,21 @@
-<?php   
-    include 'lib/session.php';
-    Session::init();
-    ?>
+
     <?php
+    $filepath = realpath(dirname(__FILE__));
+ 
+    include_once ($filepath.'/../lib/database.php');
+    include_once ($filepath.'/../helpers/format.php'); 
     
-    include '/lib/database.php';
-    include '/helpers/format.php';
-    //lay ham tu dong khong can include
-    spl_autoload_register(function($className))
-    {
-      include_once "classes/".$className.".php" ;
-    }
-      $db = new Database();
+   // lay ham tu dong khong can include
+    spl_autoload_register(function($className){
+      include_once  "classes/".$className.'.php' ;
+    });
+    $db = new Database();
       $fm = new Format();
-      $ct = new cart();
-      $us = new user();
+    //  $ct = new cart();
+    //  $us = new user();
       $cat = new category();
-      $product = new product();
+      $product = new product(); 
+     // $tmp = new temp();
     ?>
 <?php
   header("Cache-Control: no-cache, must-revalidate");
@@ -126,7 +125,7 @@ Website: www.cupcom.com.br
             <ul class="login-list">
               <li class="login-list-item"><a href="login.php">My account</a></li>
               <li class="login-list-item"><a href="login.php">Create account</a></li>
-              <li class="login-list-item"><a href="login.php">logout</a></li>
+              <li class="login-list-item"><a href="login.php">Logout</a></li>
 			  
           </label>
       </ul>

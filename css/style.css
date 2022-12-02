@@ -101,7 +101,9 @@ html {
     height: 100%;
 }
 
-
+.menu{
+    align-items: center;
+}
 /* 
 body {
     font-family: "Lato", sans-serif;
@@ -1093,9 +1095,10 @@ input[type="number"] {
     border: 1px solid #c0bebe;
     border-radius: 3px;
     float: left;
-    height: 284px;
+    height: 358px;
     padding: 20px;
-    width: 712px;
+    width: 725px;
+    
 }
 
 .register_account form input[type="text"],
@@ -1513,6 +1516,11 @@ button.grey:hover,
 .content {
     padding: 20px 0;
     background: #FFF;
+    margin: center ;
+   padding-left: 200px;
+   padding-right: 200px;
+   padding-top: 80px;
+   padding-bottom: 80px;
 }
 
 .content h2 {
@@ -3004,7 +3012,7 @@ table.tblone img {
         width: 200px;
     }
     .register_account form select {
-        width: 220px;
+        width: 200px;
     }
     .register_account form input[type="text"].code {
         width: 15%;

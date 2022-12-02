@@ -1,5 +1,5 @@
 <?php 
-  include '../classes/adminlogin.php';
+  include '../classes/temp.php';
 ?>
 <?php
   $class = new adminlogin();
@@ -45,11 +45,13 @@
 <form action="login.php" method="post">
     <h1> Admin Login </h1>
 
-    <span><?php
+    <span>
+      <?php
       if(isset($login_check)){
         echo $login_check ;
       }
-      ?><span>
+      ?>
+    </span>
 
     <div class="flex-row">
       <label class="lf--label" for="username">
@@ -70,8 +72,7 @@
     </label>
     <input id="password" class='lf--input' placeholder='Password' type='password' require="" name="adminPass">
   </div>
-  <input class='lf--submit' type='submit' value='LOGIN'>
-</form>
+  <input class='lf--submit' type="submit" value="Log in"></form>
 </div>
   
   

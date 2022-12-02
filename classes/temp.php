@@ -1,11 +1,11 @@
 <?php
-   
-    include '../lib/database.php';
-    include '../helpers/format.php';
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'/../lib/database.php');
+    include_once ($filepath.'/../helpers/format.php');
 ?>
 
 <?php
-class category
+class adminlogin
 {   
     private $db;
     private $fm;
@@ -14,9 +14,52 @@ class category
         $this -> db= new Database();
         $this -> fm= new Format();
     }
-    public function insert_category($catName)
+    public function login_admin($adminUser, $adminPass)
     { 
         //Ktra hop he
+        $adminUser = $this->fm->validation($adminUser);
+        $adminUser = $this->fm->validation($adminPass);
+
+        $adminUser = mysqli_real_escape_string($this->db->link,$adminUser);
+        $adminPass = mysqli_real_escape_string($this->db->link,$adminPass);
+    
+        if(empty($adminUser)|| empty($adminPass)){
+            $alert = "User and Password khong de trong";
+           return $alert;
+           
+        } 
+        else {
+           $query = "SELECT * FROM tbl_admin WHERE adminUser ='$adminUser' AND adminPass='$adminPass' LIMIT 1 ";
+            $result = $this->db->select($query);
+    
+
+            if($result != false)
+            {
+                $value = $result->fetth_assoc();
+                Session::set('adminlogin', true);
+                Session::set('adminid', $value['adminid']);
+                Session::set('adminUser', $value['adminUser']);
+                Session::set('adminName', $value['adminName']);
+                header('Location:index.php');
+        } else {
+            $alert = "User and Password khong dung";
+            return $alert ;
+    }
+}
+}
+}
+class category
+{   
+    private $db;
+    private $fm;
+    public function __construct()
+    {
+        $this -> db= new Database(); 
+        $this -> fm= new Format();
+    }
+    public function insert_category($catName)
+    { 
+        //Ktra hop hes
         $catName = $this->fm->validation($catName);
         
         $catName = mysqli_real_escape_string($this->db->link,$catName);
@@ -330,7 +373,34 @@ class product
        }            
     }
     }
+    public function getproduct_feathered(){
+        $query ="SELECT * FROM tbl_product where type ='0'";
+        $result = $this -> db-> select($query);
+        return $result;
+    }
  }
+//  class user
+// {   
+//     private $db;
+//     private $fm;
+//     public function __construct()
+//     {
+//         $this -> db= new Database();
+//         $this -> fm= new Format();
+//     }
+    
+// }
+// class cart
+// {   
+//     private $db;
+//     private $fm;
+//     public function __construct()
+//     {
+//         $this -> db= new Database();
+//         $this -> fm= new Format();
+//     }
+    
+// }
 
 ?>
 

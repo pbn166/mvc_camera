@@ -1,13 +1,13 @@
 <?php include 'incl/header.php' ;
-      include 'incl/slider.php';
+     // include 'incl/slider.php';
 ?>
 
 
  <div class="main">
     <div class="content">
     	 <div class="login_panel">
-        	<h3>Existing Customers</h3>
-        	<p>Sign in with the form below.</p>
+        	<h3>Đăng nhập</h3>
+        	<p>Điền thông tin tài khoản bên dưới để đăng nhập.</p>
         	<form action="hello" method="get" id="member">
                 	<input name="Domain" type="text" value="Username" class="field" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}">
                     <input name="Domain" type="password" value="Password" class="field" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
@@ -16,62 +16,62 @@
                     <div class="buttons"><div><button class="grey">Sign In</button></div></div>
                     </div>
     	<div class="register_account">
-    		<h3>Register New Account</h3>
+    		<h3>Đăng ký tài khoản</h3>
     		<form>
 		   			 <table>
 		   				<tbody>
 						<tr>
 						<td>
 							<div>
-							<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" >
+							<input type="text" value="Name" placeholder = "Nhập tên" >
 							</div>
 							
 							<div>
-							   <input type="text" value="City" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'City';}">
+							   <input type="text" value="City" placeholder = "Thành phố">
 							</div>
-							
+<!-- 							
 							<div>
-								<input type="text" value="Zip-Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Zip-Code';}">
-							</div>
+								<input type="text" value="Zip-Code" placeholder = "Nhập số điện thoại">
+							</div> -->
 							<div>
-								<input type="text" value="E-Mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-Mail';}">
+								<input type="text" value="E-Mail" placeholder = "Nhập Email">
 							</div>
 		    			 </td>
 		    			<td>
 						<div>
-							<input type="text" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}">
+							<input type="text" value="Address" placeholder = "Địa chỉ">
 						</div>
 		    		<div>
 						<select id="country" name="country" onchange="change_country(this.value)" class="frm-field required">
 							<option value="null">Select a Country</option>         
-							<option value="AF">Afghanistan</option>
-							<option value="AL">Albania</option>
-							<option value="DZ">Algeria</option>
-							<option value="AR">Argentina</option>
-							<option value="AM">Armenia</option>
-							<option value="AW">Aruba</option>
-							<option value="AU">Australia</option>
-							<option value="AT">Austria</option>
-							<option value="AZ">Azerbaijan</option>
-							<option value="BS">Bahamas</option>
-							<option value="BH">Bahrain</option>
-							<option value="BD">Bangladesh</option>
+							<option value="AF">Hà Nội</option>
+							<option value="AL">Hồ Chí Minh</option>
+							<option value="DZ">Cần Thơ</option>
+							<option value="AR">Hậu Giang</option>
+							<option value="AM">Vũng Tàu</option>
+							<option value="AW">Cà Mau</option>
+							<option value="AU">Kiên Giang</option>
+							<option value="AT">An Giang</option>
+							<option value="AZ">Đồng Tháp</option>
+							<option value="BS">Bạc Liêu</option>
+							<option value="BH">Hà Giang</option>
+							<option value="BD">Sóc Trăng</option>
 
 		         </select>
 				 </div>		        
 	
 		           <div>
-		          <input type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}">
+		          <input type="text" value="Phone"placeholder = "Số điện thoại">
 		          </div>
 				  
 				  <div>
-					<input type="text" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+					<input type="text" value="Password" placeholder = "Mật khẩu">
 				</div>
 		    	</td>
 		    </tr> 
 		    </tbody></table> 
-		   <div class="search"><div><button class="grey">Create Account</button></div></div>
-		    <p class="terms">By clicking 'Create Account' you agree to the <a href="#">Terms &amp; Conditions</a>.</p>
+		   <div class="search"><div><button class="grey">Tạo tài khoản</button></div></div>
+		    <p class="terms">Kích vào tạo tài khoản và chấp nhận điều khoản. <a href="#">Terms &amp; Conditions</a>.</p>
 		    <div class="clear"></div>
 		    </form>
     	</div>  	
