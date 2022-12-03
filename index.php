@@ -1,30 +1,47 @@
 <?php include 'incl/header.php' ;
       include 'incl/slider.php';
 	//  include 'classes/temp.php';
-	//  include 'helpers/format.php';
+//	 include 'helpers/format.php';
+?>
+<?php
+// b1: kết nối
+$conn=mysqli_connect("localhost", "root", "", "mvc_camera");
+// b2: khai báo ngôn ngữ
+mysqli_query($conn, "SET NAMES 'utf8'");
+?>
+
+<?php
+	$sql="SELECT*FROM tbl_product WHERE type=1 ORDER BY productId  LIMIT 0,9 ";
+	$query=mysqli_query($conn, $sql);
+	$rows=mysqli_num_rows($query);
+//	$file_path ='admin/uploads';
+	//$fm = new Format ;
 ?>
  <div class="main">
     <div class="content">
     	<div class="content_top">
-    		<div class="heading">
+		<div class="heading">
     		<h3>Sản phẩm nổi bật</h3>
     		</div>
     		<div class="clear"></div>
     	</div>
 	      <div class="section group">
 				<?php
-					$product_feathered = $product -> getproduct_feathered();
-					if($product_feathered) {
-						while ($result = $product_feathered->fetch_assoc()){
+					// $product_feathered = $product -> getproduct_feathered();
+					// if($product_feathered) {
+					// 	while ($result = $product_feathered->fetch_assoc()){
 
-						
+						$i=0;
+						while($row=mysqli_fetch_array($query)){
+
+							if($i==0){	
 					
 				?>
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="details.php"><img src="images/feature-pic1.png" alt="" /></a>
-					<h2><?php echo $result['productName']?></h2>
-					<p><?php echo $fm->textShorten($result['procduct_desc'],50) ?></p>
-					 <p><span class="price"><?php echo $result['price'] ?></span></p>
+					<a href="details.php<?php echo $row['productId']?>"> </a>
+            		 <img src="admin/uploads/ <?php echo $row['image']?>">
+					<h2><?php echo $row['productName']?></h2>
+					 <p>Giá: <span class="price"><?php echo number_format ($row['price']) ?>VND</span></p>
 				     <div class="button"><span><a href="details.php" class="details">Details</a></span></div>
 				</div>
 				<?php
@@ -32,38 +49,47 @@
 					}
 				?>
 			</div>
+
+			<!-- SAN PHAM MOI -->
+			<?php
+				if (isset($_GET['page'])) {
+					$page = $_GET['page'];
+				} else {
+					$page = 1;
+				}
+				$row_per_page = 9;// Sl sản phẩm /trang
+				$per_row = $page * $row_per_page - $row_per_page;
+
+				$sql = "SELECT*FROM tbl_product ORDER BY productId DESC LIMIT $per_row, $row_per_page";
+				$query = mysqli_query($conn, $sql);
+				$rows = mysqli_num_rows($query);
+			?>
 			<div class="content_bottom">
     		<div class="heading">
-    		<h3>New Products</h3>
+    		<h3>Sản phẩm mới</h3>			
     		</div>
     		<div class="clear"></div>
     	</div>
 			<div class="section group">
-				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview.php"><img src="images/new-pic1.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$403.66</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.php"><img src="images/new-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$621.75</span></p> 
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.php"><img src="images/feature-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$428.02</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-				 <img src="images/new-pic3.jpg" alt="" />
-					 <h2>Lorem Ipsum is simply </h2>					 
-					 <p><span class="price">$457.88</span></p>
 
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
+			<?php
+				$i = 0;
+				while ($row = mysqli_fetch_array($query)) {
+					if ($i == 0) { ?>
+
+
+				<div class="grid_1_of_4 images_1_of_4">
+				<!-- <div class="coupontooltip"> -->
+				<a href="details.php<?php echo $row['productId']?>"> </a>
+            		 <img src="admin/uploads/ <?php echo $row['image']?>">
+					<h2><?php echo $row['productName']?></h2>
+					 <p>Giá: <span class="price"><?php echo number_format ($row['price']) ?>VND</span></p>
+				     <div class="button"><span><a href="details.php" class="details">Details</a></span></div>
 				</div>
+				<?php
+						}
+					}
+				?>
 			</div>
     </div>
  </div>

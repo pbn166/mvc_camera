@@ -1,6 +1,10 @@
 <?php include 'incl/header.php' ;
       include 'incl/slider.php';
+	//   require_once 'lib/database.php';
+	//   $db = new database ;
+	//   $db -> connectDB();
 ?>
+
 
  <div class="main">
     <div class="content">
