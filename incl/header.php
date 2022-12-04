@@ -4,6 +4,8 @@
  
     include_once ($filepath.'/../lib/database.php');
     include_once ($filepath.'/../helpers/format.php'); 
+    include_once 'lib/session.php';
+    Session::init();
     
    // lay ham tu dong khong can include
     spl_autoload_register(function($className){
@@ -39,6 +41,7 @@
 <script type="text/javascript" src="js/nav-hover.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Exo:700' rel='stylesheet' type='text/css'>
 <link rel="preload" href="https://themes.googleusercontent.com/static/fonts/opensans/v8/k3k702ZOKiLJc3WVjuplzBsxEYwM7FgeyaSgU71cLG0.woff?1650525972" as="font" type="font/woff" crossorigin="anonymous">
 <link rel="preload" href="https://themes.googleusercontent.com/static/fonts/opensans/v8/MTP_ySUJH_bn48VBG8sNShsxEYwM7FgeyaSgU71cLG0.woff?1650525972" as="font" type="font/woff" crossorigin="anonymous">
 <link rel="preload" href="https://themes.googleusercontent.com/static/fonts/opensans/v8/uYKcPVoh6c5R0NpdEY5A-Q.woff?1650525972" as="font" type="font/woff" crossorigin="anonymous">
@@ -51,37 +54,6 @@
 </script>
 </head>
 <body>
-
-<!-- search-login-hearder -->
-  <!-- <div class="wrap">
-		<div class="header_top">
-			<div class="logo">
-				<a href="index.php"><img src="images/logo_new.png" alt="" /></a>
-			</div>
-			  <div class="header_top_right">
-			    <div class="search_box">
-				    <form>
-				    	<input type="text" value="Search for Products" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search for Products';}"><input type="submit" value="SEARCH">
-				    </form>
-			    </div>
-			    <div class="shopping_cart">
-					<div class="cart">
-						<a href="#" title="View my shopping cart" rel="nofollow">
-								<span class="cart_title">Cart</span>
-								<span class="no_product">(empty)</span>
-							</a>
-						</div>
-			      </div>
-		   <div class="login"><a href="login.php">Login</a></div>
-		 <div class="clear"></div>
-	 </div>
-	 <div class="clear"></div>
- </div> -->
-<!-- 
-Front-End Design
-Ui Design
-Website: www.cupcom.com.br
--->
 
 
 <header>
@@ -102,14 +74,16 @@ Website: www.cupcom.com.br
     <!-- open nav mobile -->
 
     <!--search -->
-    <label class="open-search" for="open-search">
+    <form class="form-inline" method="post" action="search.php">
+     <label class="open-search" for="open-search">
       <i class="fas fa-search"></i>
-      <input class="input-open-search" id="open-search" type="checkbox" name="menu" />
+      
       <div class="search">
-        <button class="button-search"><i class="fas fa-search"></i></button>
-        <input type="text" placeholder="What are you looking for?" class="input-search" />
+        <button class="button-search"><i class="fas fa-search" type="submit" name="sbm"></i></button>
+        <input type="search" placeholder="Bạn muốn tìm gì?" class="input-search" name ="keyword"/>
       </div>
     </label>
+</form>
     <!-- // search -->
     <nav class="nav-content">
       <!-- nav -->

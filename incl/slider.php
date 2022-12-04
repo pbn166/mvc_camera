@@ -3,44 +3,44 @@
 			<div class="section group">
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						 <a href="preview.php"> <img src="images/pic4.jpg" alt="" /></a>
+						 <a href="details.php"> <img src="images/nikonlogo.png" alt="" /></a>
 					</div>
 				    <div class="text list_2_of_1">
 						<h2>Nikon</h2>
-						<p>Lorem ipsum dolor sit amet sed do eiusmod.</p>
-						<div class="button"><span><a href="preview.php">Add to cart</a></span></div>
+						<p></p>
+						<div class="button"><span><a href="preview.php">Tìm hiểu thêm</a></span></div>
 				   </div>
 			   </div>			
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						  <a href="preview.php"><img src="images/pic3.jpg" alt="" / ></a>
+						  <a href="preview.php"><img src="images/canonlogo.png" alt=""  ></a>
 					</div>
 					<div class="text list_2_of_1">
 						  <h2>Canon</h2>
-						  <p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
-						  <div class="button"><span><a href="preview.php">Add to cart</a></span></div>
+						 
+						  <div class="button"><span><a href="preview.php">Tìm hiểu thêm</a></span></div>
 					</div>
 				</div>
 			</div>
 			<div class="section group">
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						 <a href="preview.php"> <img src="images/pic1.jpg" alt="" /></a>
+						 <a href="preview.php"> <img src="images/panalogo.png" alt="" /></a>
 					</div>
 				    <div class="text list_2_of_1">
 						<h2>Panasonic</h2>
-						<p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
-						<div class="button"><span><a href="preview.php">Add to cart</a></span></div>
+						<p></p>
+						<div class="button"><span><a href="preview.php">Tìm hiểu thêm</a></span></div>
 				   </div>
 			   </div>			
 				<div class="listview_1_of_2 images_1_of_2">
 					<div class="listimg listimg_2_of_1">
-						  <a href="preview.php"><img src="images/pic2.png" alt="" /></a>
+						  <a href="preview.php"><img src="images/sonylogo.png" alt="" /></a>
 					</div>
 					<div class="text list_2_of_1">
 						  <h2>Sony</h2>
-						  <p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>
-						  <div class="button"><span><a href="preview.php">Add to cart</a></span></div>
+						  <p></p>
+						  <div class="button"><span><a href="preview.php">Tìm hiểu thêm</a></span></div>
 					</div>
 				</div>
 			</div>

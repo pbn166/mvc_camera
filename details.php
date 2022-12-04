@@ -2,6 +2,8 @@
         include_once 'config/config.php';
 ?>
 <?php
+	//  $cat_id = $_GET['catid'];
+	//  $cat_name = $_GET['catName'];
 	$id = $_GET['proid'];
 	$sql =    "  SELECT tbl_product.* , tbl_category.catName, tbl_brand.brandName 
 	FROM  tbl_product INNER JOIN tbl_category ON tbl_product.catid = tbl_category.catid
@@ -22,7 +24,7 @@
 				<div class="desc span_3_of_2">
 				<h2><?php echo $row['productName']?></h2>
 					 			<p>Giá: <span class="price"><?php echo number_format ($row['price']) ?>VND</span></p><div class="price">
-								<p>Danh mục: <span class="category"><?php echo $row['productName']?></span></p>
+								<p>Danh mục: <span class="category"><?php echo $row['catName']?></span></p>
 								<p>Thương hiệu:<span class="brand"><?php echo $row['brandName']?></span></p>
 					</div>
 				<div class="add-cart">
@@ -39,26 +41,35 @@
 	    </div>
 				
 	</div>
-				<div class="rightsidebar span_3_of_1">
-					<h2>CATEGORIES</h2>
+	<div id="menu" class="collapse navbar-collapse">
+					<h2>DANH MỤC</h2>
 					<ul>
-				      <li><a href="productbycat.php">Mobile Phones</a></li>
-				      <li><a href="productbycat.php">Desktop</a></li>
-				      <li><a href="productbycat.php">Laptop</a></li>
-				      <li><a href="productbycat.php">Accessories</a></li>
-				      <li><a href="productbycat.php#">Software</a></li>
-					   <li><a href="productbycat.php">Sports & Fitness</a></li>
-					   <li><a href="productbycat.php">Footwear</a></li>
-					   <li><a href="productbycat.php">Jewellery</a></li>
-					   <li><a href="productbycat.php">Clothing</a></li>
-					   <li><a href="productbycat.php">Home Decor & Kitchen</a></li>
-					   <li><a href="productbycat.php">Beauty & Healthcare</a></li>
-					   <li><a href="productbycat.php">Toys, Kids & Babies</a></li>
-    				</ul>
+					<?php
+            $sql = "SELECT*FROM tbl_category ORDER BY catid ASC";
+            $query = mysqli_query($conn, $sql);
+            if (isset($_GET['id_category'])) {
+            }
+            while ($row = mysqli_fetch_array($query)) {
+                if (isset($_GET['id_category'])) {
+                    if ($row['catid'] == $_GET['id_category']) { ?>
+                        <li id="menu-item1" class="menu-item"><a href="index.php?id_category=<?php echo $row['catid']; ?>&catName=<?php echo $row['catName']; ?>"><?php echo $row['catName']; ?></a></li>
+                    <?php }
+                    if ($row['catid'] != $_GET['id_category']) { ?>
+                        <li class="menu-item"><a href="products.php?id_category=<?php echo $row['catid']; ?>&catName=<?php echo $row['catName']; ?>"><?php echo $row['catName']; ?></a></li>
+                    <?php }
+                } else { ?>
+                    <li class="menu-item"><a href="products.php?id_category=<?php echo $row['catid']; ?>&catName=<?php echo $row['catName']; ?>"><?php echo $row['catName']; ?></a></li>
+            <?php }
+            }
+            ?>
+			
+			</ul>
+				
+</div>
+</div>
+</div>
+			
     	
- 				</div>
- 		</div>
- 	</div>
-	</div>
+ 			
 
 	<?php include 'incl/footer.php';?>

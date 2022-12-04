@@ -3,10 +3,13 @@
 	//  include 'classes/temp.php';
 //	 include 'helpers/format.php';
 	include_once 'config/config.php';
+	include_once 'lib/session.php';
+	
 ?>
 
 
 <?php
+	
 	$sql="SELECT*FROM tbl_product WHERE type=1 ORDER BY productId  LIMIT 0,9 ";
 	$query=mysqli_query($conn, $sql);
 	$rows=mysqli_num_rows($query);
@@ -14,7 +17,7 @@
 	//$fm = new Format ;
 ?>
  <div class="main">
-    <div class="content">
+	
     	<div class="content_top">
 		<div class="heading">
     		<h3>Sản phẩm nổi bật</h3>
@@ -23,10 +26,7 @@
     	</div>
 	      <div class="section group">
 				<?php
-					// $product_feathered = $product -> getproduct_feathered();
-					// if($product_feathered) {
-					// 	while ($result = $product_feathered->fetch_assoc()){
-
+					
 						$i=0;
 						while($row=mysqli_fetch_array($query)){
 
@@ -80,8 +80,7 @@
             		 <img src="admin/uploads/<?php echo $row['image']?>">
 					<h2><?php echo $row['productName']?></h2>
 					 <p>Giá: <span class="price"><?php echo number_format ($row['price']) ?>VND</span></p>
-				     <div class="button"><span><a href="details.php" class="details">Details</a></span></div>
-				</div>
+					 <div class="button"><span><a href="details.php?proid=<?php echo $row['productId']?>" class="details">Details</a></span></div></div>
 				<?php
 						}
 					}

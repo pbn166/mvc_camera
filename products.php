@@ -1,84 +1,56 @@
 <?php include 'incl/header.php' ;
-      include 'incl/slider.php';
-	//   require_once 'lib/database.php';
-	//   $db = new database ;
-	//   $db -> connectDB();
+        include_once 'config/config.php';
+?>
+<?php
+	//  $cat_id = $_GET['catid'];
+	//  $cat_name = $_GET['catName'];
+	//$id = $_GET['proid'];
+	$sql =    "  SELECT tbl_product.* , tbl_category.catName, tbl_brand.brandName 
+	FROM  tbl_product INNER JOIN tbl_category ON tbl_product.catid = tbl_category.catid
+	INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId
+	order by tbl_product.productId desc ";
+	
+	$query = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_array($query);
 ?>
 
-
- <div class="main">
+<div class="main">
     <div class="content">
-    	<div class="content_top">
+    	<div class="section group">
     		<div class="heading">
-    		<h3>Latest from Iphone</h3>
+	
+    		<h3>Tất cả sản phẩm</h3>
     		</div>
     		<div class="clear"></div>
     	</div>
-	      <div class="section group">
+		<div class="section group">
+			
+
+				<?php
+					
+						$i=0;
+						while($row=mysqli_fetch_array($query)){
+
+							if($i==0){	
+					
+				?>
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview-3.php"><img src="images/feature-pic1.png" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="price">$505.22</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
+					<a href="details.php<?php echo $row['productId']?>"> </a>
+            		<img src="admin/uploads/<?php echo $row['image']?>">
+					<h2><?php echo $row['productName']?></h2>
+					 <p>Giá: <span class="price"><?php echo number_format ($row['price']) ?>VND</span></p>
+				     <div class="button"><span><a href="details.php?proid=<?php echo $row['productId']?>" class="details">Details</a></span></div>
 				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview-2.php"><img src="images/feature-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="price">$620.87</span></p> 
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview-4.php"><img src="images/feature-pic3.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="price">$220.97</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<img src="images/feature-pic4.png" alt="" />
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="price">$415.54</span></p> 
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
+				<?php
+						}
+					}
+				?>
 			</div>
-			<div class="content_bottom">
-    		<div class="heading">
-    		<h3>Latest from Acer</h3>
-    		</div>
-    		<div class="clear"></div>
-    	</div>
-			<div class="section group">
-				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview-3.php"><img src="images/new-pic1.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$403.66</span></p>
-				    
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview-4.php"><img src="images/new-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$621.75</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview-2.php"><img src="images/feature-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$428.02</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-				 <img src="images/new-pic3.jpg" alt="" />
-					 <h2>Lorem Ipsum is simply </h2>					 
-					 <p><span class="price">$457.88</span></p>   
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-			</div>
-    </div>
- </div>
-</div>
+			<!--	End List Product	-->
+
+			<
+			
+			
+			
   
 <?php include 'incl/footer.php';?>

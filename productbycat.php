@@ -1,5 +1,4 @@
 <?php include 'incl/header.php' ;
-      include 'incl/slider.php';
 ?>
  <div class="main">
     <div class="content">
