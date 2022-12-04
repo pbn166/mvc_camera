@@ -2,13 +2,9 @@
       include 'incl/slider.php';
 	//  include 'classes/temp.php';
 //	 include 'helpers/format.php';
+	include_once 'config/config.php';
 ?>
-<?php
-// b1: kết nối
-$conn=mysqli_connect("localhost", "root", "", "mvc_camera");
-// b2: khai báo ngôn ngữ
-mysqli_query($conn, "SET NAMES 'utf8'");
-?>
+
 
 <?php
 	$sql="SELECT*FROM tbl_product WHERE type=1 ORDER BY productId  LIMIT 0,9 ";
@@ -39,10 +35,10 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 				?>
 				<div class="grid_1_of_4 images_1_of_4">
 					<a href="details.php<?php echo $row['productId']?>"> </a>
-            		 <img src="admin/uploads/ <?php echo $row['image']?>">
+            		<img src="admin/uploads/<?php echo $row['image']?>">
 					<h2><?php echo $row['productName']?></h2>
 					 <p>Giá: <span class="price"><?php echo number_format ($row['price']) ?>VND</span></p>
-				     <div class="button"><span><a href="details.php" class="details">Details</a></span></div>
+				     <div class="button"><span><a href="details.php?proid=<?php echo $row['productId']?>" class="details">Details</a></span></div>
 				</div>
 				<?php
 						}
@@ -81,7 +77,7 @@ mysqli_query($conn, "SET NAMES 'utf8'");
 				<div class="grid_1_of_4 images_1_of_4">
 				<!-- <div class="coupontooltip"> -->
 				<a href="details.php<?php echo $row['productId']?>"> </a>
-            		 <img src="admin/uploads/ <?php echo $row['image']?>">
+            		 <img src="admin/uploads/<?php echo $row['image']?>">
 					<h2><?php echo $row['productName']?></h2>
 					 <p>Giá: <span class="price"><?php echo number_format ($row['price']) ?>VND</span></p>
 				     <div class="button"><span><a href="details.php" class="details">Details</a></span></div>

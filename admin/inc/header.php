@@ -45,7 +45,7 @@
         <div class="grid_12 header-repeat">
             <div id="branding">
                 <div class="floatleft logo">
-                    <img src="img/camera.png" alt="Logo" />
+                    <img src="../images/admin.png" alt="Logo" />
 				</div>
 				<div class="floatleft middle">
 					<h1>Quản lý cửa hàng Máy Ảnh Pahn</h1>
