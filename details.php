@@ -1,5 +1,5 @@
 <?php include 'incl/header.php' ;
-        include_once 'config/config.php';
+    include_once 'config/config.php';
 ?>
 <?php
 	//  $cat_id = $_GET['catid'];
@@ -27,12 +27,13 @@
 								<p>Danh mục: <span class="category"><?php echo $row['catName']?></span></p>
 								<p>Thương hiệu:<span class="brand"><?php echo $row['brandName']?></span></p>
 					</div>
-				<div class="add-cart">
-					<form action="cart.php" method="post">
+				<div class="add-cart" href="classes/cart/cart_add.php?proid<?php echo $row['proid']; ?>"></div>
+					<form action="classes/cart/cart_add.php?proid" method="post">
 						<input type="number" class="buyfield" name="" value="1"/>
 						<input type="submit" class="buysubmit" name="submit" value="Mua ngay"/>
 					</form>				
 				</div>
+				
 			</div>
 			<div class="product-desc">
 			<h2>Chi tiết sản phẩm</h2>

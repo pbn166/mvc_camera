@@ -21,9 +21,9 @@
                     <table class="data display datatable" id="example">
 					<thead>
 						<tr>
-							<th>Serial No.</th>
-							<th>Category Name</th>
-							<th>Action</th>
+							<th>ID.</th>
+							<th>DANH MỤC</th>
+							<th>HÀNH ĐỘNG</th>
 						</tr>
 					</thead>
 					<tbody>

@@ -74,10 +74,10 @@
     <!-- open nav mobile -->
 
     <!--search -->
-    <form class="form-inline" method="post" action="search.php">
-     <label class="open-search" for="open-search">
-      <i class="fas fa-search"></i>
-      
+    
+    <form class="form-inline" method="post" action="classes/search/search.php">
+    <label class="open-search" for="open-search">
+      <i class="fas fa-search"></i> 
       <div class="search">
         <button class="button-search"><i class="fas fa-search" type="submit" name="sbm"></i></button>
         <input type="search" placeholder="Bạn muốn tìm gì?" class="input-search" name ="keyword"/>
@@ -105,7 +105,7 @@
       </ul>
       </li>
       <li class="nav-content-item"><a class="nav-content-link" href="https://www.cupcom.com.br/"><i class="fas fa-heart"></i></a></li>
-      <li class="nav-content-item"><a class="nav-content-link" href="https://www.cupcom.com.br/"><i class="fas fa-shopping-cart"></i></a></li>
+      <li class="nav-content-item"><a class="nav-content-link" href="classes/cart/cart_lotify.php"><i class="fas fa-shopping-cart"></i></a></li>
       <!-- call to action -->
       </ul>
     </nav>

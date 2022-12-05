@@ -2,114 +2,48 @@
       include 'incl/slider.php';
 ?>
 
+<?php
+	//  $cat_id = $_GET['catid'];
+	//  $cat_name = $_GET['catName'];
+	//$id = $_GET['proid'];
+	$sql =    "  SELECT tbl_product.* , tbl_category.catName, tbl_brand.brandName 
+	FROM  tbl_product INNER JOIN tbl_category ON tbl_product.catid = tbl_category.catid
+	INNER JOIN tbl_brand ON tbl_product.brandId = tbl_brand.brandId
+	order by brandName='Nikon' desc ";
+	//$sql="SELECT*FROM tbl_brand WHERE brandName='Nikon'  ";
+	
+	$query = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_array($query);
+
+?>
 
 
  <div class="main">
-    <div class="content">
-    	<div class="content_top">
-    		<div class="heading">
-    		<h3>Acer</h3>
-    		</div>
-    		<div class="clear"></div>
-    	</div>
-	      <div class="section group">
-				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview-3.php"><img src="images/feature-pic1.png" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="price">$505.22</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
+ <div class="section group">
+				<div class="cont-desc span_1_of_2">				
+					<div class="grid images_3_of_2">
+						<img src="admin/uploads/<?php echo $row['image'] ;?>">
+					</div>
+				<div class="desc span_3_of_2">
+				<h2><?php echo $row['productName']?></h2>
+					 			<p>Giá: <span class="price"><?php echo number_format ($row['price']) ?>VND</span></p><div class="price">
+								<p>Danh mục: <span class="category"><?php echo $row['catName']?></span></p>
+								<p>Thương hiệu:<span class="brand"><?php echo $row['brandName']?></span></p>
+					</div>
+				<div class="add-cart" href="classes/cart/cart.php?proid<?php echo $row['proid']; ?>"></div>
+					<form action="classes/cart/cart.php?proid" method="post">
+						<input type="number" class="buyfield" name="" value="1"/>
+						<input type="submit" class="buysubmit" name="submit" value="Mua ngay"/>
+					</form>				
 				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview-2.php"><img src="images/feature-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="price">$620.87</span></p> 
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview-4.php"><img src="images/feature-pic3.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="price">$220.97</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<img src="images/feature-pic4.png" alt="" />
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-					 <p><span class="price">$415.54</span></p> 
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
+				
 			</div>
-		<div class="content_bottom">
-    		<div class="heading">
-    		<h3>Samsung</h3>
-    		</div>
-    		<div class="clear"></div>
-    	</div>
-			<div class="section group">
-				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview-3.php"><img src="images/new-pic1.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$403.66</span></p>
-				    
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview-4.php"><img src="images/new-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$621.75</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview-2.php"><img src="images/feature-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$428.02</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-				 <img src="images/new-pic3.jpg" alt="" />
-					 <h2>Lorem Ipsum is simply </h2>					 
-					 <p><span class="price">$457.88</span></p>   
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-			</div>
-	<div class="content_bottom">
-    		<div class="heading">
-    		<h3>Canon</h3>
-    		</div>
-    		<div class="clear"></div>
-    	</div>
-			<div class="section group">
-				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview-3.php"><img src="images/new-pic1.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$403.66</span></p>
-				    
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview-4.php"><img src="images/new-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$621.75</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview-2.php"><img src="images/feature-pic2.jpg" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p><span class="price">$428.02</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-				<div class="grid_1_of_4 images_1_of_4">
-				 <img src="images/new-pic3.jpg" alt="" />
-					 <h2>Lorem Ipsum is simply </h2>					 
-					 <p><span class="price">$457.88</span></p>   
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
-				</div>
-			</div>
-    </div>
- </div>
+			<div class="product-desc">
+			<h2>Chi tiết sản phẩm</h2>
+			<p> <?php echo $row['product_desc'];?></p>
+	        
+	    </div>
+			
 </div>
   
 <?php include 'incl/footer.php';?>
